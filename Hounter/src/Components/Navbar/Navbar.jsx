@@ -1,5 +1,6 @@
 // Home.jsx
 import { useState } from 'react';
+import './navbar.css'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,9 @@ export default function Navbar() {
             className="h-8"
             alt="Hounter Logo"
           />
-          <span className="self-center text-4xl font-semibold whitespace-nowrap dark:text-white">
-            Hounter
+          <span className=" navbarHeading self-center text-4xl font-semibold whitespace-nowrap dark:text-white">
+            H<span className=" navbarHeadingending self-center text-4xl font-semibold whitespace-nowrap dark:text-white">ounter
+          </span>
           </span>
         </a>
         <button
