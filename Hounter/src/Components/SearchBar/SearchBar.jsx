@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 
 export default function SearchBar() {
   return (
-    <Stack className="flex p-4" spacing={2} sx={{ width: 500 }}>
+    <Stack className="flex p-4" spacing={2} >
       <Autocomplete
         id="size-small-standard"
         size="small"
