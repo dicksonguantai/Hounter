@@ -1,0 +1,29 @@
+.scroll-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 20px; /* Default position for larger screens */
+    left: auto; /* Ensuring left is not set */
+    z-index: 999; /* Ensure it's above other content */
+    background-color: #ff0051;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 36px; /* Increased font size */
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .scroll-to-top:hover {
+    opacity: 0.8;
+  }
+  
+  @media (max-width: 768px) {
+    .scroll-to-top {
+      right: 10px; /* Adjust position for smaller screens */
+    }
+  }
+  
