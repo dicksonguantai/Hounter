@@ -29,7 +29,7 @@ function Footerall() {
                   <Footer.LinkGroup className="block text-white">
                     <Footer.Link href="/">Home</Footer.Link>
                     <Footer.Link href="/about-us">About Us</Footer.Link>
-                    <Footer.Link href="/departments">Our Departments</Footer.Link>
+                    <Footer.Link href="/departments">Our Locations</Footer.Link>
                     <Footer.Link href="/blogs">Blogs</Footer.Link>
                   </Footer.LinkGroup>
                 </div>
@@ -106,10 +106,10 @@ function Footerall() {
               <Footer.Copyright
                 href="/"
                 className="text-white"
-                by="Hounter™"
+                by="  Hounter™"
                 year={2024}
               />
-              <div className="flex space-x-4">
+              <div className="flex space-x-4 my-2">
                 {" "}
                 {/* Adjust spacing */}
                 <Footer.Icon href="#" className="text-white" icon={BsFacebook} />

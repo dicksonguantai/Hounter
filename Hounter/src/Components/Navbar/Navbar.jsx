@@ -52,7 +52,7 @@ export default function Navbar() {
         </button>
         <div
           className={`${
-            isOpen ? 'block' : 'hidden'
+            isOpen ? 'relative z-10' : 'hidden'
           } w-full md:block md:w-auto`}
           id="navbar-dropdown"
         >
