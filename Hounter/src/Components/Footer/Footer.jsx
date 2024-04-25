@@ -73,7 +73,7 @@ function Footerall() {
                   </Button>
                 </div>
               </div>
-              <div className="mb-8 md:w-auto px-4 ">
+              <div className="mb-8 md:w-auto">
                 <div>
                   <Footer.Title className="text-white" title="Contact Us" />
                   <Footer.LinkGroup className="block text-white">
