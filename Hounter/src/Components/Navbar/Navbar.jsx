@@ -68,7 +68,7 @@ export default function Navbar() {
 
             </li>
             
-            <li>
+            <li className='m-2 md:m-0'>
             <Link to="/login">
               
               Login
@@ -76,7 +76,7 @@ export default function Navbar() {
             </Link>
             </li>
             <span className="hidden md:inline">|</span>
-            <li>
+            <li className='m-2 md:m-0'>
               <Link to="/signup">
               
                 Register
