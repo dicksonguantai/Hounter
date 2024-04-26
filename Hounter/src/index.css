@@ -3,10 +3,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif,Nunito ;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 200;
 
 
   font-synthesis: none;
@@ -29,6 +31,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: Nunito;
 }
 
 h1 {
