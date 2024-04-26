@@ -62,9 +62,7 @@ export default function Navbar() {
         >
           <ul className="flex flex-col font-medium md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
-              
-              
-          <button type="button" className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2">
+          <button type="button" className="m-2 md:m-0 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-2 py-2 text-center me-2 mb-2">
             Request House
             </button>
 
@@ -79,7 +77,7 @@ export default function Navbar() {
                 Login
               </a>
             </li>
-               <span>|</span>
+            <span className="hidden md:inline">|</span>
             <li>
               <Link to="/login">
               <a
