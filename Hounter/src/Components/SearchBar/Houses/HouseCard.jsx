@@ -38,7 +38,7 @@ export default function HouseCard() {
     };
 
     return (
-        <div className="w-full max-w-sm overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div className="w-full overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index}>

@@ -3,7 +3,7 @@ import HouseCard from "./HouseCard";
 export default function HousesSection(){
 
     return (
-        <div className="flex flex-wrap mx-auto">
+        <div className="flex flex-wrap">
         <HouseCard/>
         <HouseCard/>
         <HouseCard/>
