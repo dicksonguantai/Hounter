@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Signup(){
 
 
@@ -40,6 +42,7 @@ export default function Signup(){
                                 Agent
                             </span>
                         </button>
+                        <Link to="/login">Sign In Instead</Link>
                     </div>
                 </div>
 

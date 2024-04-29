@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+
 export default function Login (){
 
- 
     return(
     <div className="bg-white dark:bg-gray-900">
     <div className="flex justify-center h-screen">
@@ -10,7 +11,7 @@ export default function Login (){
                     <h2 className="text-2xl font-bold text-white sm:text-3xl">Hounter</h2>
 
                     <p className="max-w-xl mt-3 text-gray-300">
-                        Tex here........
+                        Text here........
                     </p>
                 </div>
             </div>
@@ -62,7 +63,7 @@ export default function Login (){
 
                     </form>
 
-                    <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <a href="#" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
+                    <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <Link to="/signup" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</Link>.</p>
                 </div>
             </div>
         </div>
