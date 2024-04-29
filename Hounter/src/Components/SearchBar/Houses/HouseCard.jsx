@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Slider from 'react-slick';
+import { faDoorOpen, faHouseUser, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function HouseCard() {
     const [images, setImages] = useState([
         "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-        "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+        "https://images.unsplash.com/photo-1587613892572-86e79e7d2225?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80",
+        "https://images.unsplash.com/photo-1563013544-824ae0efbdc8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
     ]);
 
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,23 +38,28 @@ export default function HouseCard() {
     };
 
     return (
-        <div className="w-full overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div className="w-full max-w-sm overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index}>
-                        <img className="object-cover object-center w-full h-56" src={image} alt={`House Image ${index}`} />
+                        <div className="relative">
+                            <FontAwesomeIcon icon={faChevronLeft} className="text-white cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2" onClick={goToPreviousSlide} />
+                            <img className="object-cover object-center w-full h-56" src={image} alt={`House Image ${index}`} />
+                            <FontAwesomeIcon icon={faChevronRight} className="text-white cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2" onClick={goToNextSlide} />
+                        </div>
                     </div>
                 ))}
             </Slider>
 
-            <div className="flex items-center px-6 py-3 bg-gray-900">
-                <FontAwesomeIcon icon={faDoorOpen} />
-                <h1 className="mx-3 text-lg font-semibold text-white">Kshs 7,000</h1>
+            <div className="flex items-center justify-center px-6 py-3 bg-gray-900">
+                <h1 className="text-lg font-semibold text-white"><FontAwesomeIcon icon={faHouseUser} /> Kshs 7,000</h1>
             </div>
 
             <div className="px-6 py-4">
                 <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Bedsitter</h1>
-                <p className="py-2 text-gray-700 dark:text-gray-400">House description......</p>
+                <h1 className="text-xl font-semibold text-gray-800 dark:text-white"><FontAwesomeIcon icon={faDoorOpen} /> Gate A</h1>
+
+                <p className="py-2 text-gray-700 dark:text-gray-400">House description...</p>
 
                 <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
                     <svg aria-label="location pin icon" className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,18 +68,14 @@ export default function HouseCard() {
                     <h1 className="px-2 text-sm">Juja</h1>
                 </div>
 
-                <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
-                    <svg aria-label="email icon" className="w-6 h-6 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"/>
-                    </svg>
-                    <h1 className="px-2 text-sm">Book</h1>
+                <div className="flex items-center justify-center mt-4 text-gray-700 dark:text-gray-200">
+                    <button className="flex items-center bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600">
+                        <h1 className="px-2 text-sm">Book Now</h1>
+                        <FontAwesomeIcon icon={faCalendarDays} className="w-6 h-6 fill-current" />
+                    </button>
                 </div>
 
-                {/* Button centered within the div */}
-                <div className="flex justify-center mt-4">
-                    <button onClick={goToPreviousSlide} className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2">Previous</button>
-                    <button onClick={goToNextSlide} className="px-4 py-2 bg-blue-500 text-white rounded-md">Next</button>
-                </div>
+                
             </div>
         </div>
     );
