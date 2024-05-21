@@ -9,7 +9,7 @@ export default function BookingVisit() {
         onClick={() => setIsOpen(true)}
         className="px-6 py-2 mx-auto tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
       >
-        Open Modal
+        Book Visit
       </button>
 
       {isOpen && (
