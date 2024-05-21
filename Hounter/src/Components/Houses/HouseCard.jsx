@@ -13,6 +13,9 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+import BookingVisit from "../VisitBooking/BookingVisit";
+
+
 export default function HouseCard({ onBookNow }) {
   const [images, setImages] = useState([
     "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
@@ -124,7 +127,7 @@ export default function HouseCard({ onBookNow }) {
         </div>
 
         <div className="flex items-center justify-center mt-4 text-gray-700 dark:text-gray-200">
-          <button
+          {/* <button
             onClick={handleBookNow}
             className="flex items-center bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600"
           >
@@ -133,7 +136,8 @@ export default function HouseCard({ onBookNow }) {
               icon={faCalendarDays}
               className="w-6 h-6 fill-current"
             />
-          </button>
+          </button> */}
+          <BookingVisit />
         </div>
       </div>
     </div>
