@@ -4,7 +4,7 @@
     right: 20px; /* Default position for larger screens */
     left: auto; /* Ensuring left is not set */
     z-index: 999; /* Ensure it's above other content */
-    background-color: #ff0051;
+    background-color: #5500ff;
     color: #fff;
     width: 60px;
     height: 60px;
