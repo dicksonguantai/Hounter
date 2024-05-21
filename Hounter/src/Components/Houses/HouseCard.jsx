@@ -58,12 +58,12 @@ export default function HouseCard({ onBookNow }) {
   };
 
   return (
-    <div className="w-full md:max-w-sm overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <div className="overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
             <div className="relative">
-              <FontAwesomeIcon 
+              <FontAwesomeIcon
                 icon={faChevronLeft}
                 className="text-white cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2"
                 onClick={goToPreviousSlide}
@@ -124,7 +124,7 @@ export default function HouseCard({ onBookNow }) {
         </div>
 
         <div className="flex items-center justify-center mt-4 text-gray-700 dark:text-gray-200">
-          <button 
+          <button
             onClick={handleBookNow}
             className="flex items-center bg-blue-500 text-white font-semibold px-4 py-2 rounded-md hover:bg-blue-600"
           >
