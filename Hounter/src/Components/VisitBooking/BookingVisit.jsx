@@ -4,7 +4,8 @@ export default function BookingVisit() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
@@ -28,7 +29,7 @@ export default function BookingVisit() {
           role="dialog"
           aria-modal="true"
         >
-          <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+          <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <span
               className="hidden sm:inline-block sm:h-screen sm:align-middle"
               aria-hidden="true"
@@ -57,7 +58,7 @@ export default function BookingVisit() {
                   />
                 </svg>
               </button>
-              
+
               {isSubmitted ? (
                 <div className="flex flex-col items-center justify-center mt-4">
                   <svg
@@ -77,17 +78,16 @@ export default function BookingVisit() {
                   <p className="mt-2 text-lg sm:text-base text-green-500">Visit Successfully Booked!</p>
                 </div>
               ) : (
-                
                 <form className="mt-4" onSubmit={handleSubmit}>
                   <h3
-                className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white"
-                id="modal-title"
-              >
-                Book a Visit
-              </h3>
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                Please fill out the form below to book a visit.
-              </p>
+                    className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white"
+                    id="modal-title"
+                  >
+                    Book a Visit
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                    Please fill out the form below to book a visit.
+                  </p>
 
                   <label
                     htmlFor="name"
