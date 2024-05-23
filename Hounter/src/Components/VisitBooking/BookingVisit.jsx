@@ -2,6 +2,15 @@ import { useState } from "react";
 
 export default function BookingVisit() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setIsOpen(false);
+    }, 2000);
+  };
 
   return (
     <div className="relative flex justify-center">
@@ -48,7 +57,29 @@ export default function BookingVisit() {
                   />
                 </svg>
               </button>
-              <h3
+              
+              {isSubmitted ? (
+                <div className="flex flex-col items-center justify-center mt-4">
+                  <svg
+                    className="w-16 h-16 text-green-500 animate-pulse"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p className="mt-2 text-lg sm:text-base text-green-500">Visit Successfully Booked!</p>
+                </div>
+              ) : (
+                
+                <form className="mt-4" onSubmit={handleSubmit}>
+                  <h3
                 className="text-lg font-medium leading-6 text-gray-800 capitalize dark:text-white"
                 id="modal-title"
               >
@@ -58,78 +89,78 @@ export default function BookingVisit() {
                 Please fill out the form below to book a visit.
               </p>
 
-              <form className="mt-4" action="#">
-                <label
-                  htmlFor="name"
-                  className="block text-sm text-gray-700 dark:text-gray-200"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="John Doe"
-                  className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                />
-
-                <label
-                  htmlFor="phone"
-                  className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
-                >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  id="phone"
-                  placeholder="(07XX XXX XXX)"
-                  className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                />
-
-                <label
-                  htmlFor="date"
-                  className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
-                >
-                  Date
-                </label>
-                <input
-                  type="date"
-                  name="date"
-                  id="date"
-                  className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                />
-
-                <label
-                  htmlFor="time"
-                  className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
-                >
-                  Time
-                </label>
-                <input
-                  type="time"
-                  name="time"
-                  id="time"
-                  className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-                />
-
-                <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
-                  <button
-                    type="button"
-                    onClick={() => setIsOpen(false)}
-                    className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
+                  <label
+                    htmlFor="name"
+                    className="block text-sm text-gray-700 dark:text-gray-200"
                   >
-                    Cancel
-                  </button>
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="John Doe"
+                    className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                  />
 
-                  <button
-                    type="button"
-                    className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                  <label
+                    htmlFor="phone"
+                    className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
                   >
-                    Book Visit
-                  </button>
-                </div>
-              </form>
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    placeholder="(07XX XXX XXX)"
+                    className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                  />
+
+                  <label
+                    htmlFor="date"
+                    className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
+                  >
+                    Date
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                  />
+
+                  <label
+                    htmlFor="time"
+                    className="block mt-3 text-sm text-gray-700 dark:text-gray-200"
+                  >
+                    Time
+                  </label>
+                  <input
+                    type="time"
+                    name="time"
+                    id="time"
+                    className="block w-full px-4 py-3 mt-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
+                  />
+
+                  <div className="mt-4 sm:flex sm:items-center sm:-mx-2">
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full px-4 py-2 text-sm font-medium tracking-wide text-gray-700 capitalize transition-colors duration-300 transform border border-gray-200 rounded-md sm:w-1/2 sm:mx-2 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-40"
+                    >
+                      Cancel
+                    </button>
+
+                    <button
+                      type="submit"
+                      className="w-full px-4 py-2 mt-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-md sm:mt-0 sm:w-1/2 sm:mx-2 hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                    >
+                      Book Visit
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
