@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import HouseCard from "./HouseCard";
-
+import { HouseContext } from "./HouseContext";
 const HousesSection = () => {
-  const [houses, setHouses] = useState([]);
+  const { houses, setHouses } = useContext(HouseContext);
 
   useEffect(() => {
     fetch("https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/houses")

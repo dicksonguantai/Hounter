@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import BookingVisit from "../VisitBooking/BookingVisit";
-
+import { Link } from 'react-router-dom';
 
 export default function HouseCard({house}) {
   const { id, price, location, description, name, gate_id, rooms_available, housetype_id, gate, images } = house;
@@ -113,10 +113,20 @@ export default function HouseCard({house}) {
             />
           </svg>
           <h1 className="px-2 text-sm">{location}</h1>
+          
         </div>
-
+        <Link
+                to={{
+                  pathname: `/house/${house.id}`,
+                  state: { house }
+                }}
+                className="text-blue-600 hover:underline dark:text-blue-400"
+              >
+                View Details
+              </Link>
         <div className="flex items-center justify-center mt-4 text-gray-700 dark:text-gray-200">
           <BookingVisit />
+          
         </div>
       </div>
     </div>
