@@ -45,15 +45,15 @@ export default function HouseCard({ house }) {
   };
 
   const settings = {
-    dots: true,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: currentSlide,
     afterChange: (current) => setCurrentSlide(current),
-    nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+   
   };
 
   return (
