@@ -8,10 +8,8 @@ export default function Home() {
 
   return (
     <div>
-    <Navbar/>
     <SearchBar/>
     <HousesSection/>
-    <Footerall/>
 
       
     </div>
