@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import BookingVisit from "../VisitBooking/BookingVisit";
 import { Link } from 'react-router-dom';
 
+
 export default function HouseCard({ house }) {
   const { id, price, location, description, name, gate_id, rooms_available, housetype_id, gate, images } = house;
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -59,15 +60,25 @@ export default function HouseCard({ house }) {
     <div className="overflow-hidden m-4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
       <div className="relative">
         <Slider {...settings}>
-          {images.map((image, index) => (
-            <div key={index}>
+          {images.length > 0 ? (
+            images.map((image, index) => (
+              <div key={index}>
+                <img
+                  className="object-cover object-center w-full h-56"
+                  src={image.url}
+                  alt={`House Image ${index}`}
+                />
+              </div>
+            ))
+          ) : (
+            <div>
               <img
                 className="object-cover object-center w-full h-56"
-                src={image.url}
-                alt={`House Image ${index}`}
+                src={'/Images/Nairobiskyline.jpg'}
+                alt="Placeholder Image"
               />
             </div>
-          ))}
+          )}
         </Slider>
       </div>
 
@@ -96,7 +107,7 @@ export default function HouseCard({ house }) {
 
         <div className="flex justify-between items-center mt-4">
           <Link
-            to={`/house/${house.id}`}
+            to={`/house/${id}`}
             className="text-blue-600 hover:underline dark:text-blue-400"
           >
             View Details
