@@ -16,7 +16,7 @@ export default function HouseDetails() {
           {house.images.length > 0 && (
             <img
               className="w-full h-64 object-cover"
-              src={house.images[0].url}
+              src={house.images[0]}
               alt={`Image of ${house.id}`}
             />
           )}
@@ -37,10 +37,10 @@ export default function HouseDetails() {
 
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Gallery</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {house.images.map(image => (
+            {house.images.map((image,index) => (
               <img
-                key={image.id}
-                src={image.url}
+                key={image.index}
+                src={image}
                 alt={`House image ${image.id}`}
                 className="w-full h-32 object-cover rounded-lg"
               />
