@@ -13,7 +13,7 @@ import BookingVisit from "../VisitBooking/BookingVisit";
 import { Link } from 'react-router-dom';
 
 export default function HouseCard({ house }) {
-  const { id, price, description, rooms_available, house_type, images } = house;
+  const { id, price, description, rooms_available,location, house_type, images } = house;
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const NextArrow = (props) => {
@@ -105,7 +105,7 @@ export default function HouseCard({ house }) {
 
         <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
           <FontAwesomeIcon icon={faMapMarkerAlt} className="w-6 h-6" />
-          <h1 className="px-2 text-sm">???</h1>
+          <h1 className="px-2 text-sm">{location}</h1>
         </div>
 
         <div className="flex justify-between items-center mt-4">
