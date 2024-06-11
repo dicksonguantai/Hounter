@@ -5,11 +5,11 @@ import { HouseContext } from "./HouseContext";
 function ImageModal({ image, onClose }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative">
-        <img src={image} alt="Large view" className="max-w-full max-h-full"/>
+      <div className="relative max-w-full max-h-full p-4">
+        <img src={image} alt="Large view" className="max-w-full max-h-screen object-contain"/>
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-white hover:text-gray-400 text-2xl"
+          className="absolute top-4 right-4 text-white hover:text-gray-400 text-4xl"
         >
           &times;
         </button>
@@ -43,7 +43,7 @@ export default function HouseDetails() {
           )}
           <Link to="/">
             <button
-              className="absolute top-2 right-2 text-white hover:text-gray-400"
+              className="absolute top-2 right-2 text-white hover:text-gray-400 text-2xl"
             >
               &times;
             </button>
