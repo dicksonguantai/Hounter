@@ -65,7 +65,7 @@ export default function HouseCard({ house }) {
               <div key={index}>
                 <img
                   className="object-cover object-center w-full h-56"
-                  src={image.url}
+                  src={image}
                   alt={`House Image ${index}`}
                 />
               </div>
