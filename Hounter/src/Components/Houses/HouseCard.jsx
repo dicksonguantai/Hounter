@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function HouseCard({ house }) {
-  const { id, price, location, description, name, gate_id, rooms_available, housetype_id, gate, images } = house;
+  const { id, price,description, rooms_available, house_type, images } = house;
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const NextArrow = (props) => {
@@ -90,10 +90,10 @@ export default function HouseCard({ house }) {
 
       <div className="px-6 py-4">
         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
-          {housetype_id}
+          {house_type}
         </h1>
         <h1 className="text-lg font-semibold text-gray-800 dark:text-white mt-2">
-          <FontAwesomeIcon icon={faDoorOpen} /> {gate.name}
+          <FontAwesomeIcon icon={faDoorOpen} /> ???
         </h1>
 
         <p className="py-2 text-gray-700 dark:text-gray-400">
@@ -102,7 +102,7 @@ export default function HouseCard({ house }) {
 
         <div className="flex items-center mt-4 text-gray-700 dark:text-gray-200">
           <FontAwesomeIcon icon={faMapMarkerAlt} className="w-6 h-6" />
-          <h1 className="px-2 text-sm">{location}</h1>
+          <h1 className="px-2 text-sm">???</h1>
         </div>
 
         <div className="flex justify-between items-center mt-4">
