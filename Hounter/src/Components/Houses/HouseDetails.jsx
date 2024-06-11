@@ -17,7 +17,7 @@ export default function HouseDetails() {
             <img
               className="w-full h-64 object-cover"
               src={house.images[0].url}
-              alt={`Image of ${house.name}`}
+              alt={`Image of ${house.id}`}
             />
           )}
           <Link to="/">
@@ -29,13 +29,11 @@ export default function HouseDetails() {
           </Link>
         </div>
         <div className="p-6">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{house.name}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{house.house_type}</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Location: {house.location}</p>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Price: KES {house.price}</p>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Rooms Available: {house.rooms_available}</p>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">House Type: {house.housetype_id}</p>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Description: {house.description}</p>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">Gate: {house.gate.name}</p>
 
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Gallery</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
