@@ -2,7 +2,6 @@ import { useState } from "react";
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faDoorOpen,
   faHouseUser,
   faChevronLeft,
   faChevronRight,
@@ -13,16 +12,15 @@ import "slick-carousel/slick/slick-theme.css";
 import BookingVisit from "../VisitBooking/BookingVisit";
 import { Link } from 'react-router-dom';
 
-
 export default function HouseCard({ house }) {
-  const { id, price,description, rooms_available, house_type, images } = house;
+  const { id, price, description, rooms_available, house_type, images } = house;
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const NextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
       <div
-        className={`${className} text-white cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-2 shadow-md z-10`}
+        className={`${className} custom-arrow text-white cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-2 shadow-md z-10`}
         style={{ ...style, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         onClick={onClick}
       >
@@ -35,7 +33,7 @@ export default function HouseCard({ house }) {
     const { className, style, onClick } = props;
     return (
       <div
-        className={`${className} text-white cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-2 shadow-md z-10`}
+        className={`${className} custom-arrow text-white cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 rounded-full p-2 shadow-md z-10`}
         style={{ ...style, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         onClick={onClick}
       >
@@ -53,7 +51,16 @@ export default function HouseCard({ house }) {
     afterChange: (current) => setCurrentSlide(current),
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-   
+    arrows: true,
+    // Add these to hide the default arrows
+    appendDots: dots => (
+      <div style={{ display: 'none' }}>
+        <ul>{dots}</ul>
+      </div>
+    ),
+    customPaging: i => (
+      <div style={{ display: 'none' }}>{i}</div>
+    )
   };
 
   return (

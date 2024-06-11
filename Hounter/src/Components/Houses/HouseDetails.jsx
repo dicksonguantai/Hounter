@@ -2,16 +2,32 @@ import { useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { HouseContext } from "./HouseContext";
 
-function ImageModal({ image, onClose }) {
+function ImageModal({ images, selectedIndex, onClose, onPrev, onNext }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
       <div className="relative max-w-full max-h-full p-4">
-        <img src={image} alt="Large view" className="max-w-full max-h-screen object-contain"/>
+        <img
+          src={images[selectedIndex]}
+          alt={`Large view ${selectedIndex}`}
+          className="max-w-full max-h-screen object-contain"
+        />
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-gray-400 text-4xl"
+          className="absolute top-4 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 text-4xl p-2 rounded-full"
         >
           &times;
+        </button>
+        <button
+          onClick={onPrev}
+          className="absolute top-1/2 left-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 text-2xl p-2 rounded-full"
+        >
+          &#8592;
+        </button>
+        <button
+          onClick={onNext}
+          className="absolute top-1/2 right-4 text-white bg-black bg-opacity-50 hover:bg-opacity-75 text-2xl p-2 rounded-full"
+        >
+          &#8594;
         </button>
       </div>
     </div>
@@ -23,14 +39,28 @@ export default function HouseDetails() {
   const { houses } = useContext(HouseContext);
   const house = houses.find(h => h.id === parseInt(id));
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   if (!house) return <div>Loading...</div>;
 
+  const handlePrevImage = () => {
+    setSelectedImageIndex((prevIndex) => (prevIndex - 1 + house.images.length) % house.images.length);
+  };
+
+  const handleNextImage = () => {
+    setSelectedImageIndex((prevIndex) => (prevIndex + 1) % house.images.length);
+  };
+
   return (
     <div className="container mx-auto p-4">
-      {selectedImage && (
-        <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />
+      {selectedImageIndex !== null && (
+        <ImageModal
+          images={house.images}
+          selectedIndex={selectedImageIndex}
+          onClose={() => setSelectedImageIndex(null)}
+          onPrev={handlePrevImage}
+          onNext={handleNextImage}
+        />
       )}
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden">
         <div className="relative">
@@ -43,7 +73,7 @@ export default function HouseDetails() {
           )}
           <Link to="/">
             <button
-              className="absolute top-2 right-2 text-white hover:text-gray-400 text-2xl"
+              className="absolute top-2 right-2 text-white bg-black bg-opacity-50 hover:bg-opacity-75 text-2xl p-2 rounded-full"
             >
               &times;
             </button>
@@ -64,7 +94,7 @@ export default function HouseDetails() {
                 src={image}
                 alt={`House image ${index}`}
                 className="w-full h-32 object-cover rounded-lg cursor-pointer"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => setSelectedImageIndex(index)}
               />
             ))}
           </div>
