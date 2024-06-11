@@ -1,16 +1,37 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { HouseContext } from "./HouseContext";
+
+function ImageModal({ image, onClose }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+      <div className="relative">
+        <img src={image} alt="Large view" className="max-w-full max-h-full"/>
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-white hover:text-gray-400 text-2xl"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export default function HouseDetails() {
   const { id } = useParams();
   const { houses } = useContext(HouseContext);
   const house = houses.find(h => h.id === parseInt(id));
 
+  const [selectedImage, setSelectedImage] = useState(null);
+
   if (!house) return <div>Loading...</div>;
 
   return (
     <div className="container mx-auto p-4">
+      {selectedImage && (
+        <ImageModal image={selectedImage} onClose={() => setSelectedImage(null)} />
+      )}
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden">
         <div className="relative">
           {house.images.length > 0 && (
@@ -37,12 +58,13 @@ export default function HouseDetails() {
 
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Gallery</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {house.images.map((image,index) => (
+            {house.images.map((image, index) => (
               <img
-                key={image.index}
+                key={index}
                 src={image}
-                alt={`House image ${image.id}`}
-                className="w-full h-32 object-cover rounded-lg"
+                alt={`House image ${index}`}
+                className="w-full h-32 object-cover rounded-lg cursor-pointer"
+                onClick={() => setSelectedImage(image)}
               />
             ))}
           </div>
