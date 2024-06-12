@@ -1,0 +1,29 @@
+.admin-dashboard {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 25%;
+    background-color: #2d3748;
+    color: white;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  .content {
+    width: 75%;
+    padding: 20px;
+  }
+  

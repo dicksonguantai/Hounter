@@ -13,7 +13,7 @@ import BookingVisit from "../VisitBooking/BookingVisit";
 import { Link } from 'react-router-dom';
 
 export default function HouseCard({ house }) {
-  const { id, price, description, rooms_available,location, house_type, images } = house;
+  const { id, price, description, rooms_available, location, house_type, images } = house;
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const NextArrow = (props) => {
@@ -52,7 +52,6 @@ export default function HouseCard({ house }) {
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
     arrows: true,
-    // Add these to hide the default arrows
     appendDots: dots => (
       <div style={{ display: 'none' }}>
         <ul>{dots}</ul>
@@ -115,7 +114,7 @@ export default function HouseCard({ house }) {
           >
             View Details
           </Link>
-          <BookingVisit />
+          <BookingVisit houseId={id} />
         </div>
       </div>
     </div>

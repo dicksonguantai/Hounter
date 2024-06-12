@@ -1,0 +1,24 @@
+.house-list {
+    margin: 20px;
+  }
+  
+  .house-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .house-list table th,
+  .house-list table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .house-list table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .house-list button {
+    margin: 5px;
+  }
+  

@@ -1,0 +1,37 @@
+.house-form {
+    margin: 20px;
+  }
+  
+  .house-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .house-form input[type="text"],
+  .house-form input[type="number"],
+  .house-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .house-form input[type="file"] {
+    padding: 5px;
+  }
+  
+  .house-form button {
+    padding: 10px 15px;
+    background-color: #3182ce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .house-form button:hover {
+    background-color: #2b6cb0;
+  }
+  
