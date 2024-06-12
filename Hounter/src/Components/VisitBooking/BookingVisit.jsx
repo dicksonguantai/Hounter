@@ -5,55 +5,62 @@ export default function BookingVisit({ houseId }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
+    name: "",
+    phone: "",
     house_id: houseId, // Set house_id from prop
-    date: '',
-    time: ''
+    date: "",
+    time: "",
   });
-  const [responseMessage, setResponseMessage] = useState('');
+  const [responseMessage, setResponseMessage] = useState("");
   const [isBookingFailed, setIsBookingFailed] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setResponseMessage('');
+    setResponseMessage("");
     setIsBookingFailed(false);
 
     const scheduledDateTime = `${formData.date} ${formData.time}`;
 
     try {
-      const response = await fetch('/api/book', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          house_id: formData.house_id,
-          scheduled_date_time: scheduledDateTime
-        })
-      });
+      const response = await fetch(
+        "https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/book",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.phone,
+            house_id: formData.house_id,
+            scheduled_date_time: scheduledDateTime,
+          }),
+        }
+      );
 
       const data = await response.json();
 
       if (response.ok) {
-        setResponseMessage(data.success || 'Payment successful, an agent will get back to you');
+        setResponseMessage(
+          data.success || "Payment successful, an agent will get back to you"
+        );
       } else {
-        setResponseMessage(data.error || 'An unexpected error occurred. Please try again.');
+        setResponseMessage(
+          data.error || "An unexpected error occurred. Please try again."
+        );
         setIsBookingFailed(true);
       }
     } catch (error) {
-      setResponseMessage('Server error, kindly retry the request.');
+      setResponseMessage("Server error, kindly retry the request.");
       setIsBookingFailed(true);
     } finally {
       setIsLoading(false);
@@ -127,12 +134,16 @@ export default function BookingVisit({ houseId }) {
                       d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"
                     />
                   </svg>
-                  <p className="mt-2 text-lg sm:text-base text-blue-500">Processing...</p>
+                  <p className="mt-2 text-lg sm:text-base text-blue-500">
+                    Processing...
+                  </p>
                 </div>
               ) : isSubmitted ? (
                 <div className="flex flex-col items-center justify-center mt-4">
                   <svg
-                    className={`w-16 h-16 ${isBookingFailed ? 'text-red-500' : 'text-green-500'}`}
+                    className={`w-16 h-16 ${
+                      isBookingFailed ? "text-red-500" : "text-green-500"
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -142,10 +153,18 @@ export default function BookingVisit({ houseId }) {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d={isBookingFailed ? 'M6 18L18 6M6 6l12 12' : 'M5 13l4 4L19 7'}
+                      d={
+                        isBookingFailed
+                          ? "M6 18L18 6M6 6l12 12"
+                          : "M5 13l4 4L19 7"
+                      }
                     />
                   </svg>
-                  <p className={`mt-2 text-lg sm:text-base ${isBookingFailed ? 'text-red-500' : 'text-green-500'}`}>
+                  <p
+                    className={`mt-2 text-lg sm:text-base ${
+                      isBookingFailed ? "text-red-500" : "text-green-500"
+                    }`}
+                  >
                     {responseMessage}
                   </p>
                 </div>
