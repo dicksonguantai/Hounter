@@ -32,9 +32,10 @@ export default function BookingVisit({ houseId }) {
 
     try {
       const response = await fetch(
-        "https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/book",
+        "https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/book", 
         {
           method: "POST",
+          mode: 'cors',
           headers: {
             "Content-Type": "application/json",
           },
