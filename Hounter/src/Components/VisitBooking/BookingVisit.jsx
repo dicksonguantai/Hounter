@@ -38,6 +38,8 @@ export default function BookingVisit({ houseId }) {
           mode: 'cors',
           headers: {
             "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
+            "Accept": "application/json",
           },
           body: JSON.stringify({
             name: formData.name,
