@@ -14,6 +14,7 @@ export default function BookingVisit({ houseId }) {
   const [responseMessage, setResponseMessage] = useState("");
   const [isBookingFailed, setIsBookingFailed] = useState(false);
 
+  console.log(formData);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -28,24 +29,39 @@ export default function BookingVisit({ houseId }) {
     setResponseMessage("");
     setIsBookingFailed(false);
 
-    const scheduledDateTime = `${formData.date} ${formData.time}`;
+    // Extract date and time components
+    const [year, month, day] = formData.date.split("-");
+    const [hour, minute] = formData.time.split(":");
+    const date = new Date(year, month - 1, day, hour, minute);
+
+    // Format date and time to MM-DD-YYYY hh:mmAM/PM
+    const formattedMonth = (date.getMonth() + 1).toString().padStart(2, "0");
+    const formattedDay = date.getDate().toString().padStart(2, "0");
+    const formattedYear = date.getFullYear();
+    const hours = date.getHours();
+    const formattedHours = (hours % 12 || 12).toString().padStart(2, "0");
+    const formattedMinutes = minute.padStart(2, "0");
+    const period = hours < 12 ? "AM" : "PM";
+    const formattedDateTime = `${formattedDay}-${formattedMonth}-${formattedYear} ${formattedHours}:${formattedMinutes}${period}`;
+
+    console.log(formattedDateTime);
 
     try {
       const response = await fetch(
-        "https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/book", 
+        "https://4g90ay7oei.execute-api.us-east-1.amazonaws.com/api/book",
         {
           method: "POST",
-          mode: 'cors',
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
             "Cache-Control": "no-cache",
-            "Accept": "application/json",
+            Accept: "application/json",
           },
           body: JSON.stringify({
             name: formData.name,
             phone: formData.phone,
             house_id: formData.house_id,
-            scheduled_date_time: scheduledDateTime,
+            scheduled_date_time: formattedDateTime,
           }),
         }
       );
