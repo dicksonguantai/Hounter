@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { HouseContext } from "./HouseContext";
-
+import BookingVisit from '../VisitBooking/BookingVisit';
 function ImageModal({ images, selectedIndex, onClose, onPrev, onNext }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -85,6 +85,7 @@ export default function HouseDetails() {
           <p className="text-gray-600 dark:text-gray-400 mb-4">Price: KES {house.price}</p>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Rooms Available: {house.rooms_available}</p>
           <p className="text-gray-600 dark:text-gray-400 mb-4">Description: {house.description}</p>
+          <BookingVisit houseId={id} />
 
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">Gallery</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
